@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  {% load staticfiles %}
+  <link rel="shortcut icon" href='{% static 'picture/lks.ico' %}' />
+  <link type="text/css" rel="stylesheet" href="{% static 'css/topbar.css' %}"></link>
+<title>ruo-gu</title>
+<script>
+  window._bd_share_config = {
+    common : {
+      bdText : '{{ blog.title }}',
+      bdDesc : '{{ blog.body }}',
+      bdUrl : '{{ blog.url }}',
+    },
+    share : [{
+      "bdSize" : 16
+    }],
+    slide : [{
+      bdImg : 0,
+      bdPos : "right",
+      bdTop : 100
+    }],
+    image : [{
+      viewType : 'list',
+      viewPos : 'top',
+      viewColor : 'black',
+      viewSize : '16',
+      viewList : ['qzone','tsina','huaban','tqq','renren']
+    }],
+    selectShare : [{
+      "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+    }]
+  }
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style type="text/css">
+.div-a{ float:left;width:50%;background-color: #ACD6FF;font-size: 25px;}
+.div-b{ float:left;width:50%;background-color: #FFFF37;font-size: 25px;}
+h2 { background: #fff; padding: 8 1em; margin: 0; }
+p { background: #fff; padding: 8 2em; margin: 0;font-size:12px; }
+li { padding: 5 0em;  background: #fff; }
+</style>
+</head>
+<body style="margin-top:0">
+<div class="topbar_wrapper">
+<div class = "yellow-wrapper">
+<div class= "yellow animate">
+  <a href="#top">&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;</a>
+</div>
+  </div>
+</div>
+<div class="div-a" style="text-align: center;">
+<a href="{% url 'blogs:index' %}">有新鲜事</a>
+</div>
+<div class="div-b" style="text-align: center;">
+<a href="{% url 'paste:display_info' %}">有新代码</a>
+</div>
+<p>&#8195;</p>
+<p><a href="{% url 'paste:create_info' %}">新增</a> &bull; <a href="{% url 'paste:display_info' %}">列出全部</a></p>
+    {% block content %}{% endblock %}
+</body>
+</html>

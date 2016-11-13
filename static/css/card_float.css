@@ -1,0 +1,28 @@
+.polaroid {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+.container {
+  text-align: center;
+  padding: 5px 20px;
+}
+.justifier {
+  text-align: justify;
+  padding: 5px 20px;
+}
+.alticle {
+  text-align:left;
+  text-indent:2em;
+  padding: 5px 20px;
+}
+.continuebox{
+  text-align: left;
+  background-color: #fff;
+  color: #fff;
+  padding: 5px 0px;
+}
+
+
+}

@@ -1,0 +1,138 @@
+{% extends "blogs/base.html" %}
+{% block content %}
+<style>
+body {margin:25px;}
+div.polaroid {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}
+</style>
+<body>
+{% for blog in latest_blogs_list %}
+<div class="polaroid">
+<div class="container">
+<li><a	href={{	blog.url	}}>{{	blog.title }}</a></li>
+<p>{{ blog.publisher }}</p>
+<p>{{ blog.pub_date }}</p>
+<p>{{ blog.body }}</p>
+</div>
+</div>
+{% endfor %}
+</body>
+{% endblock %}
+
+
+
+
+{% extends "blogs/base.html" %}
+{% block content %}
+<style>
+body {margin:25px;}
+div.polaroid {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}
+</style>
+<body>
+{% for  blog in latest_blogs_list.object_list %}
+
+     <div class="polaroid">
+     <div class="container">
+     <li><a	href={{	blog.url	}}>{{	blog.title }}</a></li>
+     <p>{{ blog.publisher }}</p>
+     <p>{{ blog.pub_date }}</p>
+     <p>{{ blog.body }}</p>
+     </div>
+     </div>
+
+ {% endfor %}
+
+
+<li class="page">
+<div class="pagination">
+<span class="step-links">
+{% if latest_blogs_list.has_previous %}
+<a href="?page={{ latest_blogs_list.previous_page_number }}">previous</a>
+{% endif %}
+<span class="current">
+Page {{ latest_blogs_list.number }} of {{  latest_blogs_list.paginator.num_pages }}.
+</span>
+{% if latest_blogs_list.has_next %}
+<a href="?page={{ latest_blogs_list.next_page_number }}" class="nextpage">next</a>
+<a   class="nextpage2">next</a>
+{% endif %}
+</span>
+</div>
+</li>
+</body>
+{% endblock %}
+function getnextpage(){
+      $(".nextpage2").click(function(){
+        var href = $(".nextpage").attr("href");
+        console.log(href);
+        $.ajax({
+            type:"get",
+            url: href,
+            success:function(data){
+             var html = $(data).find(".showblog").html();
+             $(".pageli").remove();
+             $(".showblog").append(html);
+                //重新绑定点击事件
+                getnextpage();
+            }
+        }) ;//end ajax
+    }); // end    $(".nextpage)
+}
+<script language="javascript">function getnextpage(){
+      $(".nextpage2").click(function(){
+        var href = $(".nextpage").attr("href");
+        console.log(href);
+        $.ajax({
+            type:"get",
+            url: href,
+            success:function(data){
+             var html = $(data).find(".showblog").html();
+             $(".pageli").remove();
+             $(".showblog").append(html);
+                //重新绑定点击事件
+                getnextpage();
+            }
+        }) ;//end ajax
+    }); // end
+     $(".nextpage")
+}
+</script>
+
+  <img src="/home/ruo-gu/mytest/picture/lks.jpg">
+
+  <h4>Ruo-gu</h4>
+  <p>欢迎</p>
+
+</div>
+<div class="container">
+
+</div>
+
+<style type="text/css">
+body { padding: 0 2em; font-family: Microsoft Yahei,sans-serif; background: #fff; }
+h1 { background: #255074; padding: 1 0.8em; margin: 0; }
+h2 { background: #3776AB; padding: 8 2em; margin: 0; }
+h4 { background: #1E2933; padding: 1 1.5em; margin: 0;}
+p {  padding: 2 2em; margin: 0; font-size:12px; }
+p a { text-decoration: none; }
+pre { padding: 20px; background: #ddd; }
+li { padding: 5 2em;  background: #00bb00;font-family: YouYuan ,sans-serif  ; }
+form { padding: 5 2em;  font-size:12px; background: #fff; }
+</style>

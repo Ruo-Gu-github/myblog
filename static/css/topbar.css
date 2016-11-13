@@ -1,0 +1,37 @@
+.topbar_wrapper {
+    height: 10px;
+    top: 0;
+    width: 100%;
+    max-width: 1300px;
+    list-style: none;
+    margin: 0 auto;
+    background-color: black;
+}
+
+.topbar_wrapper .yellow-wrapper {
+    float: right;
+    width: 299px;
+    margin-bottom: 0px;
+    margin-right: 4.5%;
+
+}
+
+.topbar_wrapper .yellow {
+    z-index: 999999;
+    width: 100px;
+    height: 10px;
+    background-color: #fff159;
+    cursor: pointer;
+    position: fixed;
+    will-change: transform;
+}
+.topbar_wrapper .yellow:hover {
+	height: 20px;
+	-webkit-transition: height .5s;
+    transition: height .5s;
+}
+
+.topbar_wrapper .yellow.animate {
+  -webkit-animation: yellowBounce 0.5s cubic-bezier(0.64, 0.16, 0.84, 0.45) 1s 4 alternate;
+          animation: yellowBounce 0.5s cubic-bezier(0.64, 0.16, 0.84, 0.45) 1s 4 alternate;
+}

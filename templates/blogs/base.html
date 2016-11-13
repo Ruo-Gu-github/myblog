@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+ruo-gu
+</title>
+<style>
+.div-a{ float:left;width:50%;background-color: #ACD6FF;font-size: 25px;}
+.div-b{ float:left;width:50%;background-color: #FFFF37;font-size: 25px;}
+</style>
+<script>
+  window._bd_share_config = {
+    common : {
+      bdText : '{{ blog.title }}',
+      bdDesc : '{{ blog.body }}',
+      bdUrl : '{{ blog.url }}',
+    },
+    share : [{
+      "bdSize" : 16
+    }],
+    slide : [{
+      bdImg : 0,
+      bdPos : "right",
+      bdTop : 100
+    }],
+    image : [{
+      viewType : 'list',
+      viewPos : 'top',
+      viewColor : 'black',
+      viewSize : '16',
+      viewList : ['qzone','tsina','huaban','tqq','renren']
+    }],
+    selectShare : [{
+      "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+    }]
+  }
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+{% load staticfiles %}
+<link rel="shortcut icon" href='{% static 'picture/lks.ico' %}' />
+<link type="text/css" rel="stylesheet" href="{% static 'css/topbar.css' %}"></link>
+</head>
+
+
+<body style="margin-top:0">
+
+
+<div class="topbar_wrapper">
+<div class = "yellow-wrapper">
+<div class= "yellow animate">
+  <a href="#top">&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;</a>
+</div>
+  </div>
+</div>
+<div class="div-a" style="text-align: center;">
+<a href="{% url 'blogs:index' %}">有新鲜事</a>
+</div>
+<div class="div-b" style="text-align: center;">
+<a href="{% url 'paste:display_info' %}">有新代码</a>
+</div>
+<p>&#8195;</p>
+    {% block content %}{% endblock %}
+
+</body>
+</html>

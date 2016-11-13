@@ -1,0 +1,52 @@
+{% extends "blogs/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'css/card_float.css' %}"></link>
+<link type="text/css" rel="stylesheet" href="{% static 'css/underline.css' %}"></link>
+
+{% for blog in latest_blogs_list.object_list %}
+<div class="polaroid">
+<div class="justifier">
+<p style="color:#444;font-size:12px;color:write;">{{ blog.publisher }}|{{ blog.pub_date }}</p>
+<h3><a	href={{	blog.url	}}>{{	blog.title }}</a></h3>
+</div>
+
+<div class="alticle">
+<p>{{ blog.body }}</p>
+</div>
+<div class="continuebox">
+  <ul style="padding:0 1em"><a	href={{	blog.url	}}>{{	"查看原文" }}</a>
+    <div class="bdsharebuttonbox" data-tag="share_1">
+    	<a class="bds_mshare" data-cmd="mshare"></a>
+    	<a class="bds_qzone" data-cmd="qzone" href="#"></a>
+    	<a class="bds_tsina" data-cmd="tsina"></a>
+    	<a class="bds_baidu" data-cmd="baidu"></a>
+    	<a class="bds_renren" data-cmd="renren"></a>
+    	<a class="bds_tqq" data-cmd="tqq"></a>
+    	<a class="bds_more" data-cmd="more">更多</a>
+    	<a class="bds_count" data-cmd="count"></a>
+    </div>
+</ul>
+</div>
+</div>
+{% endfor %}
+
+
+<h3 class="page">
+<div class="pagination">
+<span class="step-links">
+{% if latest_blogs_list.has_previous %}
+<a href="?page={{ latest_blogs_list.previous_page_number }}">上一页</a>
+{% endif %}
+<span class="current">
+第 {{ latest_blogs_list.number }} / {{  latest_blogs_list.paginator.num_pages }}页
+</span>
+{% if latest_blogs_list.has_next %}
+<a href="?page={{ latest_blogs_list.next_page_number }}">下一页</a>
+{% endif %}
+</span>
+</div>
+</h3>
+{% endblock %}

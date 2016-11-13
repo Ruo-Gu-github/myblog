@@ -1,0 +1,30 @@
+
+
+   {% extends "blogs/base.html" %}
+   {% block content %}
+   <style>
+   body {margin:25px;}
+   div.polaroid {
+     width: 100%;
+     background-color: white;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     margin-bottom: 25px;
+   }
+   div.container {
+     text-align: center;
+     padding: 10px 20px;
+   }
+   </style>
+   <body>
+   {% for blog in latest_blogs_list.object_list %}
+   <div class="polaroid">
+   <div class="container">
+   <li><a	href={{	blog.url	}}>{{	blog.title }}</a></li>
+   <p>{{ blog.publisher }}</p>
+   <p>{{ blog.pub_date }}</p>
+   <p>{{ blog.body }}</p>
+   </div>
+   </div>
+   {% endfor %}
+   </body>
+   {% endblock %}

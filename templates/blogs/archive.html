@@ -1,0 +1,134 @@
+
+
+{% if latest_blogs_list %}
+<style>
+body {margin:25px;}
+div.polaroid {
+  width: 40%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}
+</style>
+<body>
+				<ul>
+				{% for blogs in latest_blogs_list	%}
+                    <div class="polaroid">
+                  <h4><a href="{%	url	'blogs:detail'	blogs.id	%}">{{ blogs }}</a></h4>
+
+				{% endfor	%}
+				</ul>
+{% else	%}
+				<p>No	blog are available.</p>
+{% endif %}
+</body>
+{% extends "admin/base.html" %}
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    body {margin:25px;}
+    div.polaroid {
+      width: 40%;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 25px;
+    }
+    div.container {
+      text-align: center;
+      padding: 10px 20px;
+    }
+    </style>
+    </head>
+    <body>
+			{% for post in latest_poll_list %}
+    <h1>响应式卡片</h1>
+
+    <div class="polaroid">
+      <h1>{{ blog.title }}<h1>
+      <h2>{{ blog.publisher }}<h2>
+      <h3>{{ blog.pub_date }}<h3>
+      <h4>{{ blog.url }}<h4>
+      <h5>{{ blog.body }}<h5>
+      </div>
+    </div>
+		{% endfor %}
+	    </body>
+    </html>
+{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+
+    <title>{% block title %} Andrew Liu Blog {% endblock %}</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">
+    <link rel="stylesheet" href="http://picturebag.qiniudn.com/monokai.css">
+</head>
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 class="brand-title"><a href="{% url 'blogs:detail' %}">Andrew Liu Blog</a></h1>
+            <h2 class="brand-tagline">雪忆 - Snow Memory</h2>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="/">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'archives' %}">归档</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://github.com/Andrew-liu/my_blog_tutorial">Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-error pure-button" href="http://weibo.com/dinosaurliu">Weibo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="/">专题</a>
+                    </li>
+                    <li>
+                    <form class="pure-form" action="/search/" method="get">
+                    <input class="pure-input-3-3" type="text" name="s" placeholder="search">
+                    </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'about_me' %}">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'RSS' %}">RSS</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            {% block content %}
+            {% endblock %}
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://andrewliu.tk/about/">About Me</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

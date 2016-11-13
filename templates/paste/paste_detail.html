@@ -1,0 +1,29 @@
+{% extends "paste/base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ object }}{% endblock %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/card_float.css' %}"></link>
+<link type="text/css" rel="stylesheet" href="{% static 'css/underline.css' %}"></link>
+<h2>{{ object }}</h2>
+<p>语言: {{ object.get_syntax_display }}<br>
+日期: {{ object.timestamp|date:"r" }}</p>
+<code><pre name="code" class="brush: {{ object.get_syntax_display|lower }}">
+{{ object.content }}</pre></code>
+
+<script language="javascript" src="{% static 'js/shCore.js' %}"></script>
+<script language="javascript" src="{% static 'js/shBrushPlain.js' %}"></script>
+<script language="javascript" src="{% static 'js/shBrushPython.js' %}"></script>
+<script language="javascript" src="{% static 'js/shBrushXml.js' %}"></script>
+<script language="javascript" src="{% static 'js/shBrushJScript.js' %}"></script>
+<script language="javascript" src="{% static 'js/shBrushSql.js' %}"></script>
+<script language="javascript" src="{% static 'js/shBrushCss.js' %}"></script>
+<link type="text/css" rel="stylesheet"
+    href="{% static 'css/shCore.css' %}"></link>
+<link type="text/css" rel="stylesheet"
+    href="{% static 'css/shThemeDefault.css' %}"></link>
+<script type="text/javascript">
+SyntaxHighlighter.config.clipboardSwf = "{% static 'js/clipboard.swf' %}";
+SyntaxHighlighter.all();
+</script>
+{% endblock %}
